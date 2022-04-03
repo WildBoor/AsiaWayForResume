@@ -1,0 +1,165 @@
+@import "../base/variables.scss";
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    width: 800px;
+    height: 500px;
+    box-shadow: 5px 5px 20px -3px $headerMenuBackgroundColor;
+    overflow: hidden;
+    border-radius: $menuBorderRadius;
+    background: linear-gradient(to left,#545f99,#66b1ff);
+
+    .sing_up_img {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            // filter: blur(5px);
+        }
+
+        .words {
+            display: block;
+            position: absolute;
+            top: 15%;
+            left: 34%;
+            color: rgb(39, 39, 39);
+
+            .background {
+                width: 100%;
+                height: 100%;
+                background-color: #ffffff;
+                filter: blur(15px);
+                position: absolute;
+                opacity: 0.7;
+            }
+
+            p {
+                color: rgb(39, 39, 39);
+                font-size: 39px;
+                text-shadow: 22px 24px 3px rgb(39, 39, 39);
+
+                &:first-child {
+                    margin-bottom: 5px;
+                }
+
+                &:last-child {
+                    margin-left: 50px;
+                }
+
+                span {
+                    color: $logoColor;
+                    text-shadow: 22px 24px 3px $logoColor;
+                }
+            }
+            
+        }
+    }
+
+    .sign_up_form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 90%;
+        width: 90%;
+        padding: 20px;
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            height: 53px;
+            margin-bottom: 12px;
+
+            .gender {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-column-gap: 10px;
+                align-items: center;
+                justify-items: center;
+                width: 100%;
+                height: 100%;
+
+                div {
+                    label {
+                        align-items: center;
+                        font-size: 17px;
+                        cursor: pointer;
+
+                        input {
+                            display: inline;
+                            width: inherit;
+                            height: inherit;
+                        }
+                    }
+                }
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                width: inherit;
+                height: inherit;
+                border: 0;
+                // border-bottom: 1px solid black;
+                outline: none;
+                font-family: "Montserrat Regular";
+                padding: 10px;
+                padding-left: 20px;
+                font-size: 17px;
+                color: #242424;
+                box-shadow: 1px 7px 12px -7px #242424;
+                border-radius: $menuBorderRadius;
+                transition: 0.5s;
+                auto
+
+                &:hover {
+                    box-shadow: none;
+                }
+            }
+
+            input[type="radio"] {
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            input.error_field {
+                border: 1px solid $logoColor;
+            }
+        }
+
+        input[type="submit"] {
+            width: 200px;
+            height: 53px;
+            color: rgb(39, 39, 39);
+            font-size: 20px;
+            // border: 2px solid rgb(39, 39, 39);
+            border: 0;
+            border-width: 0;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: "Montserrat Regular";
+            box-shadow: 1px 7px 5px -7px #242424;
+            transition: 0.4s;
+            border-radius: $menuBorderRadius;
+
+            &:hover {
+                background: $leftMenuBackgroundGradient;
+                box-shadow: none;
+                color: $logoColor;
+            }
+        }
+    }
+}

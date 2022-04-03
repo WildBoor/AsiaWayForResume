@@ -1,0 +1,58 @@
+<div class="post_categories_params">
+    <div class="location">
+        <span class="block_name">Location</span>
+        <div class="category">
+            <input type="checkbox" name="World" id="World">
+            <label for="World">World</label>
+        </div>
+        {% for category, item in categories_and_subcategories.items %}
+            {% if category == 'Asia' %}
+                {% if item.subcategories %}
+                    <div class="category">
+                        <input type="checkbox" name="{{ category }}" data-category-id="{{ item.category_id }}" id="{{ category }}">
+                        <span>{{ category }}<i class='bx bx-chevron-right'></i></span>
+                    </div>
+                    <ul class="subcategory {{ category }}">
+                        {% for subcategory_name, item in item.subcategories.items %}
+                            <li>
+                                <input type="checkbox" name="{{ subcategory_name }}" data-subcategory-id="{{ item.subcategory_id }}" id="{{ subcategory_name }}">
+                                <label for="{{ subcategory_name }}">{{ subcategory_name }}</label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <div class="category">
+                        <input type="checkbox" name="{{ category }}" data-category-id="{{ item.category_id }}" id="{{ category }}">
+                        <label for="{{ category }}">{{ category }}</label>
+                    </div>
+                {% endif %}
+            {% endif %} 
+        {% endfor %}
+    </div>
+    <div class="themes">
+        <span class="block_name">Categories</span>
+        {% for category, item in categories_and_subcategories.items %}
+            {% if category != 'Asia' %}
+                {% if item.subcategories %}
+                    <div class="category">
+                        <input type="checkbox" name="{{ category }}" data-category-id="{{ item.category_id }}" id="{{ category }}">
+                        <span>{{ category }}<i class='bx bx-chevron-right'></i></span>
+                    </div>
+                    <ul class="subcategory {{ category }}">
+                        {% for subcategory_name, item in item.subcategories.items %}
+                            <li>
+                                <input type="checkbox" name="{{ subcategory_name }}" data-subcategory-id="{{ item.subcategory_id }}" id="{{ subcategory_name }}">
+                                <label for="{{ subcategory_name }}">{{ subcategory_name }}</label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <div class="category">
+                        <input type="checkbox" name="{{ category }}" data-category-id="{{ item.category_id }}" id="{{ category }}">
+                        <label for="{{ category }}">{{ category }}</label>
+                    </div>
+                {% endif %}
+            {% endif %} 
+        {% endfor %}
+    </div>
+</div>

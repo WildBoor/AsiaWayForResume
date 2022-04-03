@@ -1,0 +1,114 @@
+@import "variables";
+
+.spinner {
+    @extend %flex-column-center;
+    justify-content: space-around;
+    width: 100px;
+    height: 100px;
+    pointer-events: all;
+    z-index: 1;
+
+    &.top {
+        margin: 50px auto 50px auto;
+    }
+
+    &.bottom {
+        margin: 20px auto 30px auto;
+    }
+
+    .loading-container {
+        position: relative;
+        opacity: 0.8;
+        width: 60px;
+        height: 60px;
+        // transform: translate(-25px, -25px);
+
+        .ball {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0);
+            border: 5px solid $logoColor;
+            opacity: 0.9;
+            border-top: 5px solid rgba(0, 0, 0, 0);
+            border-left: 5px solid rgba(0, 0, 0, 0);
+            border-radius: 50px;
+            // box-shadow: 0 0 35px rgb(0, 0, 0);
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+            animation: spin 1s infinite linear;
+        }
+
+        .ball-inner {
+            background-color: rgba(0, 0, 0, 0);
+            border: 5px solid $logoColor;
+            opacity: 0.9;
+            border-top: 5px solid rgba(0, 0, 0, 0);
+            border-left: 5px solid rgba(0, 0, 0, 0);
+            border-radius: 50px;
+            // box-shadow: 0 0 15px rgb(0, 0, 0);
+            width: 40px;
+            height: 40px;
+            margin: 10px 0 0 10px;
+            top: -50px;
+            animation: spin 1s infinite reverse linear;
+        }
+    }
+
+    .ball-text {
+        text-align: center;
+        animation: pulse 1s infinite alternate ease-in-out;
+
+        &:after {
+            width: 1px;
+            height: 1px;
+            content: " .";
+            animation: dots 1s steps(5, end) infinite;
+        }
+    }
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dots {
+    0% {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    20% {
+        color: rgba(0, 0, 0, 0);
+        text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    40% {
+        // color: rgb(68, 68, 68);
+        text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    60% {
+        text-shadow: 0.25em 0 0 rgb(34, 34, 34), 0.5em 0 0 rgba(0, 0, 0, 0);
+    }
+
+    80% {
+        text-shadow: 0.25em 0 0 rgb(44, 44, 44), 0.5em 0 0 rgb(41, 41, 41);
+    }
+
+    100% {
+        text-shadow: 0.25em 0 0 rgb(53, 53, 53), 0.5em 0 0 rgb(0, 0, 0);
+    }
+}

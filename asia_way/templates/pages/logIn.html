@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/pages/logIn.min.css' %}" type="text/css">
+{% endblock css %}
+
+{% block js %}
+    {{ block.super }}
+    <script type="module" src="{% static 'js/bundles/logIn.bundle.js' %}"></script>
+{% endblock js %}
+
+{% block content %}
+    <div class="form">
+        {% include '../forms/logInForm.html' with user_login_form=user_login_form %}
+        <div class="log_in_img">
+            <img src="{% static 'img/logInImg.jpg' %}" alt="">
+            <div class="words">
+                <p>Make your</p>
+                <p><span>way</span></p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

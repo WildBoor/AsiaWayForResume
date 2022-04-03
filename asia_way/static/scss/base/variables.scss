@@ -1,0 +1,47 @@
+
+//header menu
+$bodyHeaderWidth: 100%;
+$headerMenuHeight: 75px;
+$headerMenuBackgroundColor: #242424;
+$menuBorderRadius: 10px;
+$headerMenuWidth: 97%;
+// $headerMenuNewColor: #183b50;
+// $headerMenuNewColor: #a1a1a1;
+$headerMenuNewColor: #700b8a;
+
+//color
+$logoColor: #dd2626;
+$headerMenuTextColor: #f9f9f9;
+
+$searchBlockBackgroundGradient: linear-gradient(to top left, rgb(54, 54, 54), rgb(83, 82, 82));
+$leftMenuBackgroundGradient: linear-gradient(to top left, rgb(39, 39, 39), rgb(58, 58, 58));
+$backgroundHoverGradient: linear-gradient(to top left, rgb(39, 39, 39), rgb(58, 58, 58));
+// $menuBackgroundHoverColor: #5d0074;
+// $menuBackgroundHoverColor: #4f0263;
+
+//message color
+$messageSuccessColor: #00e676; // green accent-3
+$messageSuccessBorderColor: #00c853; // green accent-4
+
+$messagePrimaryColor: #00b0ff; // light-blue accent-3
+$messagePrimaryBorderColor: #0091ea; // light-blue accent-4
+
+$messageWarningColor: #ffb300; // amber darken-1
+$messageWarningBorderColor: #ff6f00; // amber darken-4
+
+$messageErrorColor: #ef5350; //  red lighten-1
+$messageErrorBorderColor: #b71c1c; // red darken-4
+
+$leftMenuWidth: 85px;
+
+%flex-row-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+%flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

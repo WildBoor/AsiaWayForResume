@@ -1,0 +1,286 @@
+@import "../../base/variables.scss";
+
+$postTemplateHeight: 150px;
+$postTemplateWidth: 95%;
+$postTemplatePadding: 10px;
+$titleBlockHeight: 30px;
+$detailsBlockHeight: 30px;
+$postTemplateGridRowGap: 5px;
+$contentMaxHeight: calc(100% - #{$titleBlockHeight} - #{$detailsBlockHeight}- 2*#{$postTemplateGridRowGap});
+$postTemplateImageSize: calc(#{$postTemplateHeight} - 2 *#{$postTemplatePadding});
+$detailsFontSize: 14px;
+
+.post_template {
+    display: grid;
+    grid-template-areas:
+        "post_img post_title"
+        "post_img post_content"
+        "post_img post_details";
+    grid-template-columns: $postTemplateImageSize 1fr;
+    grid-template-rows: $titleBlockHeight 1fr $detailsBlockHeight;
+    grid-column-gap: 2*$postTemplatePadding;
+    grid-row-gap: $postTemplateGridRowGap;
+    width: $postTemplateWidth;
+    height: $postTemplateHeight;
+    border-radius: $menuBorderRadius;
+    margin: 0 auto 15px auto;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+    min-width: 680px;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+        box-shadow: 0px 0px 15px #000;
+
+        .title {
+            text-decoration: underline;
+        }
+    }
+
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+        background: $searchBlockBackgroundGradient;
+        z-index: -1;
+    }
+
+    .post_img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-area: post_img;
+        width: $postTemplateImageSize;
+        height: $postTemplateImageSize;
+        border-radius: $menuBorderRadius;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: 1s;
+        }
+    }
+
+    .title {
+        @extend %flex-row-center;
+        justify-content: flex-start;
+        grid-area: post_title;
+        color: $headerMenuTextColor;
+        font-weight: bold;
+        padding-right: 10px;
+        overflow: hidden;
+    }
+
+    .content {
+        @extend %flex-row-center;
+        justify-content: flex-start;
+        align-items: center;
+        grid-area: post_content;
+        color: $headerMenuTextColor;
+        max-height: $contentMaxHeight;
+        font-size: 14px;
+        overflow: hidden;
+        padding-right: 10px;
+    }
+
+    .details {
+        display: grid;
+        grid-area: post_details;
+        grid-template-areas: "author comments date";
+        grid-template-columns: 1fr auto auto;
+        grid-column-gap: 20px;
+        padding-right: 10px;
+        color: $headerMenuTextColor;
+
+        // .subcategories {
+        //     display: flex;
+        //     justify-content: flex-start;
+        //     align-items: center;
+        //     grid-area: subcategories;
+
+        //     .category,
+        //     .subcategory {
+        //         padding: 5px;
+        //         // font-size: $detailsFontSize;
+        //         font-size: 8px;
+        //         color: $headerMenuTextColor;
+        //         border-radius: $menuBorderRadius;
+        //         border: 1px solid $headerMenuTextColor;
+        //         width: auto;
+        //         margin-left: 5px;
+        //     }
+        // }
+
+        .date {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-area: date;
+            font-size: $detailsFontSize;
+        }
+
+        .comments {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-area: comments;
+
+            span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: $detailsFontSize;
+
+                i {
+                    margin-right: 10px;
+                    font-size: 16px;
+                }
+            }
+        }
+
+        $postTemplateAuthorAvatarSize: 25px;
+
+        .author {
+            @extend %flex-row-center;
+            justify-content: flex-end;
+            align-items: center;
+            grid-area: author;
+            font-size: $detailsFontSize;
+            text-decoration: none;
+            color: $headerMenuTextColor;
+
+            img {
+                width: $postTemplateAuthorAvatarSize;
+                height: $postTemplateAuthorAvatarSize;
+                background-color: $headerMenuBackgroundColor;
+                border-radius: 50%;
+                margin-right: 10px;
+                object-fit: cover;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .name {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                grid-area: name;
+                width: auto;
+                height: 100%;
+
+                &:hover {
+                    color: $logoColor;
+                }
+            }
+        }
+    }
+
+    &.small {
+        display: grid;
+        grid-template-areas:
+            "post_img details"
+            "post_img title";
+        height: $postTemplateImageSize;
+        grid-template-columns: 1fr 4fr;
+        grid-template-rows: 1fr 2fr;
+        grid-column-gap: 10px;
+        grid-row-gap: 5px;
+
+        .post_img {
+            display: flex;
+            grid-area: post_img;
+            width: $postTemplateImageSize;
+            height: $postTemplateImageSize;
+            border-radius: $menuBorderRadius;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: 1s;
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.1);
+                }
+            }
+        }
+
+        $postTemplateAuthorAvatarSize: 32px;
+
+        .details {
+            display: grid;
+            grid-area: details;
+            grid-template-areas: "date comments author";
+            grid-template-columns: 1fr 1fr 3fr;
+            grid-column-gap: 5px;
+
+            .date {
+                grid-area: date;
+            }
+
+            .comments {
+                grid-area: comments;
+            }
+
+            .date,
+            .likes,
+            .comments {
+                background-color: $headerMenuBackgroundColor;
+            }
+
+            .author {
+                @extend %flex-row-center;
+                justify-content: flex-start;
+                align-items: center;
+                // height: 100%;
+                grid-area: author;
+
+                img {
+                    width: $postTemplateAuthorAvatarSize;
+                    height: $postTemplateAuthorAvatarSize;
+                    margin-right: 10px;
+                    background-color: $headerMenuBackgroundColor;
+                    border-radius: 50%;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                .name {
+                    grid-area: name;
+                    height: 100%;
+                    width: calc(100% - #{$postTemplateAuthorAvatarSize} - 1%);
+                    background-color: $headerMenuBackgroundColor;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .title {
+            display: flex;
+            justify-content: center;
+            grid-area: title;
+            background-color: $headerMenuBackgroundColor;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

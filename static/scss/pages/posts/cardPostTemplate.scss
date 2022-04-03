@@ -1,0 +1,79 @@
+@import '../../base/variables.scss';
+
+.card_post {
+    @extend %flex-column-center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: $menuBorderRadius;
+    cursor: pointer;
+
+    &:hover {
+        .title {
+            text-decoration: underline;
+        }  
+    }
+
+    .subcategory {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: fit-content;
+        height: fit-content;
+        font-size: 16px;
+        padding: 5px;
+        border-radius: $menuBorderRadius;
+        border: 2px solid #fff;
+        color: #fff;
+        z-index: 2;
+
+        &:hover {
+            border: 2px solid $logoColor;
+            color: $logoColor;
+        }
+    }
+
+    .created_at {
+        position: absolute;
+        top: 25px;
+        right: 20px;
+        width: fit-content;
+        height: fit-content;
+        color: #fff;
+        z-index: 2;
+    }
+
+    &:hover {
+        img {
+            transform: scale(1.05);
+        }
+    }
+    
+    &:after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    }
+
+    .title {
+        position: absolute;
+        width: 80%;
+        margin-bottom: 30px;
+        color: $headerMenuTextColor;
+        font-size: 20px;
+        z-index: 2;
+    }
+
+    img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 1s;
+    }
+}

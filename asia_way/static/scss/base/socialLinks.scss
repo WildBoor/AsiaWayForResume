@@ -1,0 +1,52 @@
+@import "variables";
+
+.social_links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 35%;
+    left: 0;
+    width: 55px;
+    height: 290px;
+
+    a.link {
+        @extend %flex-row-center;
+        justify-content: flex-end;
+        align-items: center;
+        width: 80px;
+        height: 50px;
+        text-decoration: none;
+        background: rgb(39, 39, 39);
+        box-shadow: 0px 13px 14px -7px #242424;
+        cursor: pointer;
+        border-right: 3px solid rgb(39, 39, 39);
+        transition: 0.6s;
+        transform: translate(-20px);
+
+        &:hover {
+            transform: translate(-5px);
+            border-color: $logoColor;
+
+            i {
+                color: $logoColor;
+            }
+        }
+
+        .icon-border {
+            @extend %flex-row-center;
+            justify-content: center;
+            align-items: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+        }
+
+        i {
+            color: $headerMenuTextColor;
+            font-size: 25px;
+            margin-right: 13px;
+        }
+    }
+}

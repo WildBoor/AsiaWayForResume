@@ -1,0 +1,20 @@
+<form action="#" class="sign_up_form">
+    {% csrf_token %}
+    <div class="row">
+        {{ user_signup_form.username }}
+    </div>
+    <div class="row">
+        {{ user_signup_form.email }}
+    </div>
+    <div class="row">
+        {{ profile_signup_form.gender }}
+    </div>
+    <div class="row">
+        {{ user_signup_form.password1 }}
+    </div>
+    <div class="row">
+        {{ user_signup_form.password2 }}
+    </div>
+
+    <input type="submit" class="submit" value="Sign Up">
+</form>

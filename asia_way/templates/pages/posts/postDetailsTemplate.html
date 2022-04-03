@@ -1,0 +1,10 @@
+<div class="details">
+    <div class="date"><span>{{ post.created_at }}</span></div>
+    <div class="comments">
+        <span>
+            <i class='bx bx-comment'></i>
+            <div class="total">{{ post.comments_total }}</div>
+        </span>
+    </div>
+    {% include './postAuthorTemplate.html' with post=post %}
+</div>

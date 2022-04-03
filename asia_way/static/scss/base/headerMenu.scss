@@ -1,0 +1,170 @@
+@import "variables";
+
+.body__header {
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $headerMenuHeight;
+    background: $leftMenuBackgroundGradient;
+    // border-bottom-left-radius: $menuBorderRadius;
+    // border-bottom-right-radius: $menuBorderRadius;
+    box-shadow: -2px 10px 14px -7px #242424;
+
+    .menu {
+        @extend %flex-row-center;
+        justify-content: flex-start;
+        height: inherit;
+        width: 95%;
+        font-size: 18px;
+
+        .logo {
+            @extend %flex-row-center;
+            height: inherit;
+            margin-left: 40px;
+
+            .logo_svg {
+                @extend %flex-row-center;
+                align-items: center;
+
+                svg {
+                    width: 80px;
+                    height: 50px;
+
+                    g {
+                        path {
+                            fill: $logoColor;
+                            stroke: inherit;
+                        }
+                    }
+                }
+
+                &:after {
+                    content: "";
+                    display: block;
+                    margin-left: 2px;
+                    height: 52px;
+                    width: 3px;
+                    background: #857e7e;
+                }
+            }
+
+            .logo_name {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100px;
+                height: inherit;
+                margin-left: 5px;
+
+                span {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 60%;
+                    height: 25%;
+                    font-size: 24px;
+                    color: white;
+
+                    &:nth-child(2) {
+                        margin-left: 16px;
+                    }
+                }
+            }
+        }
+
+        .right-part {
+            @extend %flex-row-center;
+            justify-content: space-between;
+            width: 100%;
+            height: inherit;
+            margin-left: 100px;
+
+            .menu_links {
+                display: inline-grid;
+                grid-template-columns: repeat(5, min-content);
+                justify-items: center;
+                height: inherit;
+
+                a.link {
+                    padding-left: 30px;
+                    padding-right: 30px;
+                }
+            }
+
+            .user-auth {
+                @extend %flex-row-center;
+                justify-content: flex-end;
+                height: inherit;
+                width: 45%;
+
+                .auth {
+                    @extend %flex-row-center;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    height: inherit;
+                    width: 200px;
+
+                    .sign-up,
+                    .login-in {
+                        @extend %flex-row-center;
+                        justify-content: center;
+                        width: 80px;
+                        height: inherit;
+                    }
+
+                    a.link {
+                        width: 100px;
+                    }
+                }
+
+                
+            }
+
+            .user_tools {
+                @extend %flex-row-center;
+                justify-content: flex-end;
+                align-items: center;
+                height: 100%;
+            
+                
+
+                i {
+                    font-size: 23px;
+                    margin-right: 15px;
+                    color: $headerMenuTextColor;
+                    cursor: pointer;
+                    transition: 0.4s;
+
+                    &:hover {
+                        color: $logoColor;
+                    }
+
+                    &:last-child {
+                        margin-left: 15px;
+                    }
+                }
+                
+            }
+
+            a.link {
+                @extend %flex-row-center;
+                align-items: center;
+                justify-content: center;
+                height: inherit;
+                text-decoration: none;
+                color: $headerMenuTextColor;
+                border-bottom: 2px solid rgb(39, 39, 39);
+                transition: 0.4s;
+
+                &:hover {
+                    background: rgb(39, 39, 39);
+                    color: $logoColor;
+                    border-color: $logoColor;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{% for post_id, post in posts.items %}
+    <div class="post_template" data-post-id="{{ post.id }}">
+        <div class="background"></div>
+        <div class="post_img">
+            <img src="{{ post.preview_image_url }}" alt="">
+        </div>
+        <div class="title">{{ post.title |truncatechars:100|truncatewords:8 }}</div>
+        <div class="content">{{ post.preview_text |truncatechars:300|truncatewords:30 }}</div>
+        {% include './postDetailsTemplate.html' with post=post %}
+    </div>
+{% endfor %}

@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/pages/signUp.min.css' %}" type="text/css">
+{% endblock css %}
+
+{% block js %}
+    {{ block.super }}
+    <script type="module" src="{% static 'js/bundles/signUp.bundle.js' %}"></script>
+{% endblock js %}
+
+{% block content %}
+    <div class="form">
+        <div class="sing_up_img">
+            <img src="{% static 'img/signUpFormImg.jpg' %}" alt="">
+            <div class="words">
+                {% comment %} <div class="background"></div> {% endcomment %}
+                <p>Start your</p>
+                <p><span>way</span> here</p>
+            </div>
+        </div>
+        {% include '../forms/signUpForm.html' with user_signup_form=user_signup_form profile_signup_form=profile_signup_form %}
+    </div>
+{% endblock content %}

@@ -1,0 +1,82 @@
+{% load static %}
+{% load user_tags %}
+{% load common_tags %}
+
+<div class="left_menu">
+    {% include './logo.html' %}
+
+    <div class="links">
+        <div class="link">
+            <a href="{% url 'index' %}">
+                <i class='bx bx-home-alt'></i>
+                <span>Home</span>
+            </a>
+        </div>
+        <div class="link">
+            <a href="{% url 'posts_index' %}">
+                <i class='bx bxs-dashboard' ></i>
+                <span>Dashboard</span>
+            </a>
+        </div>  
+        <div class="link">
+            <a href="{% url 'posts_index' %}">
+                <i class='bx bx-news' ></i>
+                <span>Posts</span>
+            </a>
+        </div>
+        <div class="link">
+            <a href="{% url 'posts_index' %}">
+                <i class='bx bx-chat' ></i>
+                <span>Messages</span>
+            </a>
+        </div>
+        <div class="link">
+            <a href="{% url 'courses_index' %}">
+                <i class='bx bxs-graduation'></i>
+                <span>Courses</span>
+            </a>
+        </div>
+        <div class="link">
+            <a href="{% url 'posts_index' %}">
+                <i class='bx bx-bell' ></i>
+                <span>Notifications</span>
+            </a>
+        </div>
+        <div class="link">
+            <a href="{% url 'community' %}">
+                <i class='bx bx-user-voice'></i>
+                <span>Community</span>
+            </a>
+        </div>
+        <div class="link">
+            <a href="{% url 'about' %}">
+                <i class='bx bx-info-circle'></i>
+                <span>About</span>
+            </a>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="link">
+            <a href="{% url 'user_settings' user.profile.id %}">
+                <i class='bx bx-cog'></i>
+                <span>Settings</span>
+            </a>
+        </div>
+        <div class="link">
+            <a href="{% url 'log_out' %}">
+                <i class='bx bx-door-open' ></i>
+                <span>Log out</span>
+            </a>
+        </div>
+        <div class="link user_link">
+            <a href="{% url 'user' user.profile.id %}">
+                <div class="user_avatar">
+                    <img src="{% media %}{% get_profile_avatar_url_tag user.profile.id %}">
+                </div>
+                <div class="username">{{ user.username |truncatechars:20 }}</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+

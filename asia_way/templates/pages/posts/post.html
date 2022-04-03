@@ -1,0 +1,71 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% load posts_tags %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/pages/posts/post.min.css' %}" type="text/css">
+{% endblock css %}
+
+{% block js %}
+    {{ block.super }}
+    <script defer type="module" src="{% static 'js/bundles/carouselPosts.bundle.js' %}"></script>
+    <script defer src="{% static 'js/bundles/post.bundle.js' %}"></script>
+{% endblock js %}
+
+{% block content %}
+
+<div class="post_content">
+    <div class="row">
+        <div class="top_posts">
+            {% get_carousel_posts_tag %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="post_data">
+            <div class="post" data-post-id="{{ post.id }}">
+                <div class="background"></div>
+                <div class="title">{{ post.title }}</div>
+                <div class="content">{{ post.content |safe }}</div>
+                {% include './postDetailsTemplate.html' with post=post %}
+                {% comment %} <div class="categories_and_subcategories">
+                    <div class="subcategories">
+                        {% if post.post_subcategories %}
+                            {% for subcategory in post.post_subcategories %}
+                                <div class="subcategory">{{ subcategory.post_subcategory }}</div>
+                            {% endfor %}
+                        {% else %}
+                            {% for category in post.post_categories.items %}
+                                <div class="category">{{ category.post_category }}</div>
+                            {% endfor %}
+                        {% endif %}
+                        <span>...</span>
+                    </div>
+                </div> {% endcomment %}
+            </div>
+            <div class="post_comments">
+                {% if user.is_authenticated %}
+                    {% include '../../forms/postCommentForm.html' %}
+                {% else %}
+                    <div class="auth">
+                        <div class="message">To leave comment</div>
+                        <div class="background"></div>
+                        <div class="links">
+                            <a href="{% url 'sign_up' %}" class="sign-up link"><span>Sign Up</span></a>
+                            <span>or</span>
+                            <a href="{% url 'log_in' %}" class="login-in link"><span>Log In</span></a>
+                        </div>
+                    </div>
+                {% endif %}
+                
+                {% get_post_comments_tag post.id %}
+            </div>
+        </div>
+        <div class="right_posts_column">
+            {% get_title_posts_tag %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

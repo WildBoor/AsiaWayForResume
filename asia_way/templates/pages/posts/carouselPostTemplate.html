@@ -1,0 +1,14 @@
+<div class="carousel_posts" data-hidden-left="0">
+    {% for post_id, post in posts.items %}
+            <a class="carousel_post" href="{% url 'post' post_id %}">
+                <div class="background"></div>
+                <div class="post_img">
+                    <img src="{{ post.preview_image_url }}" alt="">
+                </div>
+                <div class="title">{{ post.title |truncatechars:50|truncatewords:8 }}</div>
+                <div class="content">{{ post.preview_text |truncatechars:200|truncatewords:20 }}</div>
+            </a>
+    {% endfor %}
+</div>
+<div class="carousel_previous hide"><i class='bx bxs-chevron-left hide'></i></div>
+<div class="carousel_next"><i class='bx bxs-chevron-right show'></i></div>

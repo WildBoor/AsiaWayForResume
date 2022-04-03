@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% load common_tags %}
+{% load posts_tags %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/pages/user/user.min.css' %}" type="text/css">
+{% endblock css %}
+
+{% block js %}
+    {{ block.super }}
+    <script defer type="module" src="{% static 'js/bundles/user.bundle.js' %}"></script>
+{% endblock js %}
+
+{% block content %}
+    <div class="user_content">
+        <div class="background"></div>
+        <div class="profile">
+            <div class="avatar">
+                <img src="{% media %}{{ avatar_url }}" class="background_img"></img>
+                <div class="img">
+                    <img src="{% media %}{{ avatar_url }}" alt="">
+                </div>
+            </div>
+            <div class="info">
+                <div class="email"><span>Email</span></div>
+                <div class="posts_total"><span>Posts</span></div>
+                <div class="followers_total"><span>Followers</span></div>
+                <div class="comments_total"><span>Comments</span></div>
+                <div class="follow"><span>Follow</span></div>
+            </div>
+        </div>
+        <div class="last_posts">
+            {% comment %} {% get_profile_posts_tag %} {% endcomment %}
+        </div>
+        <div class="last_comments">
+            {% comment %} {% get_profile_comments_tag %} {% endcomment %}
+        </div>
+    </div> 
+{% endblock content %}

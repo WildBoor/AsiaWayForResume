@@ -1,0 +1,16 @@
+@import 'variables';
+
+.body__content {
+    @extend %flex-column-center;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - #{$headerMenuHeight});
+    width: 90%;
+    margin: auto;
+
+    &.authenticated {
+        margin-left: $leftMenuWidth;
+        width: calc(100% - #{$leftMenuWidth});
+        height: 100%;
+    }
+}

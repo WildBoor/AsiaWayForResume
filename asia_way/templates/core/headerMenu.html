@@ -1,0 +1,22 @@
+{% load static %}
+
+<div class="body__header">
+    <div class="menu">
+        {% include './logo.html' %}
+        <div class="right-part">
+            <div class="menu_links">
+                <a href="{% url 'index' %}" class="link">Home</a>
+                <a href="{% url 'posts_index' %}" class="link">Posts</a>
+                <a href="{% url 'courses_index' %}" class="link">Courses</a>    
+                <a href="{% url 'community' %}" class="link">Community</a>
+                <a href="{% url 'about' %}" class="link">About</a>
+            </div>
+            <div class="user-auth">
+                <div class="auth">
+                    <a href="{% url 'sign_up' %}" class="sign-up link">Sign Up</a>
+                    <a href="{% url 'log_in' %}" class="login-in link">Log In</a>
+                </div>
+            </div>
+        </div>     
+    </div>
+</div>

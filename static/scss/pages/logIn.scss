@@ -1,0 +1,147 @@
+@import "../base/variables.scss";
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    width: 800px;
+    height: 500px;
+    box-shadow: 5px 5px 20px -3px $headerMenuBackgroundColor;
+    overflow: hidden;
+    border-radius: $menuBorderRadius;
+    background: linear-gradient(to right,#6a5299,#031b34);
+
+    .log_in_img {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+            // transform: scale(-1, -1);
+            // filter: blur(5px);
+        }
+
+        .words {
+            display: block;
+            position: absolute;
+            top: 23%;
+            left: 33%;
+            color: rgb(39, 39, 39);
+
+            p {
+                color: #ffffff;
+                font-size: 42px;
+                text-shadow: 22px 24px 3px #fff;
+
+                &:last-child {
+                    margin-left: 100px;
+                }
+
+                span {
+                    color: $logoColor;
+                    text-shadow: 22px 24px 3px $logoColor;
+                }
+            }
+        }
+    }
+
+    .log_in_form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 90%;
+        width: 90%;
+        padding: 20px;
+
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            height: 53px;
+            margin-bottom: 45px;
+
+            .logo_svg {
+                @extend %flex-row-center;
+                justify-content: center;
+                height: 70px;
+                width: 70px;
+        
+                svg {
+                    width: 100%;
+                    height: 100%;
+        
+                    g {
+                        path {
+                            fill: $logoColor;
+                            stroke: inherit;
+                        }
+                    }
+                }
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                width: inherit;
+                height: inherit;
+                border: 0;
+                // border-bottom: 1px solid black;
+                outline: none;
+                font-family: "Montserrat Regular";
+                padding: 10px;
+                padding-left: 20px;
+                font-size: 17px;
+                color: #242424;
+                box-shadow: 1px 7px 12px -7px #242424;
+                border-radius: $menuBorderRadius;
+                transition: 0.5s;
+
+                &:hover {
+                    box-shadow: none;
+                }
+            }
+
+            input[type="radio"] {
+                cursor: pointer;
+                font-size: 18px;
+            }
+
+            input.error_field {
+                border: 1px solid $logoColor;
+            }
+        }
+
+        input[type="submit"] {
+            width: 200px;
+            height: 53px;
+            color: rgb(39, 39, 39);
+            font-size: 20px;
+            // border: 2px solid rgb(39, 39, 39);
+            border: 0;
+            border-width: 0;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: "Montserrat Regular";
+            box-shadow: 1px 7px 5px -7px #242424;
+            transition: 0.4s;
+            border-radius: $menuBorderRadius;
+
+            &:hover {
+                background: $leftMenuBackgroundGradient;
+                box-shadow: none;
+                color: $logoColor;
+            }
+        }
+    }
+}

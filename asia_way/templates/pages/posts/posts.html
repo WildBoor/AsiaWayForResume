@@ -1,0 +1,66 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% load posts_tags %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/pages/posts/posts.min.css' %}" type="text/css">
+{% endblock css %}
+
+{% block js %}
+    {{ block.super }}
+    <script defer type="module" src="{% static 'js/bundles/posts.bundle.js' %}"></script>
+{% endblock js %}
+
+
+{% block content %}
+    <div class="posts_content">
+        <div class="search_left_column">
+            {% get_posts_categories_and_subcategories_tag %}
+        </div>
+        <div class="search_field">
+            <input type="text" placeholder="Search...">
+            <div class="reset btn"><i class='bx bx-reset'></i></div>
+            <div class="refresh btn"><i class='bx bx-refresh'></i></div>
+            <div class="search btn"><i class='bx bx-search'></i></div>
+        </div>
+        <div class="post_create">
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_create' %}" class="create btn"><i class='bx bxs-plus-circle' ></i>Create post</a>
+            {% endif %}
+        </div>
+        <div class="posts" data-offset="0">
+            {% get_limit_posts_tag 10 %}
+        </div>
+        <div class="search_right_column">
+            <div class="time_period">
+                <div class="name">
+                    <span>Time period</span>
+                </div>
+                <ul>
+                    <li>
+                        <input type="radio" name="period" id="Today" value="Today">
+                        <label for="Today">Today</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="period" id="Yesterday" value="Yesterday">
+                        <label for="Yesterday">Yesterday</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="period" id="Week" value="Week">
+                        <label for="Week">This week</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="period" id="Month" value="Month">
+                        <label for="Month">This month</label>
+                    </li>
+                    <li>
+                        <input type="radio" name="period" id="Year" value="Year">
+                        <label for="Year">This year</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

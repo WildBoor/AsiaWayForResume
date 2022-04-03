@@ -1,0 +1,515 @@
+@import "../../base/variables.scss";
+@import "./carouselPostTemplate.scss";
+@import "./textPostTemplate.scss";
+
+$detailsFontSize: 18px;
+$columnRowsMargin: 15px;
+$textPostsColumnWidth: 230px;
+
+.post_content {
+    @extend %flex-column-center;
+    justify-content: flex-start;
+    width: 95%;
+    height: 95%;
+
+    .row {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-bottom: $columnRowsMargin;
+
+        &:nth-child(2) {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-bottom: $columnRowsMargin;
+            padding-bottom: 30px;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+            background: #fff;
+            z-index: -1;
+        }
+
+        .top_posts {
+            position: relative;
+            height: 150px;
+            width: 100%;
+            border-radius: $menuBorderRadius;
+        }
+
+        .post_data {
+            @extend %flex-column-center;
+            justify-content: flex-start;
+            width: calc(100% - #{$textPostsColumnWidth} - #{$columnRowsMargin}); 
+            height: fit-content;
+            margin-right: $columnRowsMargin;
+            overflow: hidden;
+
+            .post {
+                @extend %flex-column-center;
+                justify-content: center;
+                position: relative;
+                width: 100%; 
+                height: fit-content;
+                overflow: hidden;
+                border-radius: $menuBorderRadius;
+                color: black;
+        
+                .title,
+                .content,
+                .details {
+                    width: 90%;
+                }
+        
+                .title {
+                    height: auto;
+                    font-size: 28px;
+                    font-weight: 600;
+                    margin-bottom: 30px;
+                    margin-top: 40px;
+                }
+        
+                .content {
+                    height: auto;
+                    padding: 5px;
+
+                    h1,
+                    h2,
+                    h3,
+                    h4 {
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                    }
+    
+                    p {
+                        margin-bottom: 10px;
+                    }
+    
+                    li {
+                        margin-bottom: 10px;
+                    }
+    
+                    strong {
+                        font-weight: 600;
+                    }
+    
+                    img {
+                        border-radius: $menuBorderRadius;
+    
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+    
+                    &:after{
+                        content: "";
+                        display: block;
+                        height: 2px;
+                        width: 90%;
+                        background: #252525;
+                        margin: 30px auto 10px auto;
+                        // transition: 0.5s;
+                        opacity: 0.3;
+                    }
+                }
+                
+                .details {
+                    display: grid;
+                    grid-area: post_details;
+                    grid-template-areas: "author comments date";
+                    grid-template-columns: 1fr auto auto;
+                    grid-column-gap: 20px;
+                    padding-right: 10px;
+                    height: 50px;
+                    width: 90%;
+                    margin-bottom: 13px;
+        
+                    // .subcategories {
+                    //     display: flex;
+                    //     justify-content: flex-start;
+                    //     align-items: center;
+                    //     grid-area: subcategories;
+        
+                    //     .category,
+                    //     .subcategory {
+                    //         padding: 5px;
+                    //         // font-size: $detailsFontSize;
+                    //         font-size: 8px;
+                    //         color: $headerMenuTextColor;
+                    //         border-radius: $menuBorderRadius;
+                    //         border: 1px solid $headerMenuTextColor;
+                    //         width: auto;
+                    //         margin-left: 5px;
+                    //     }
+                    // }
+    
+                    .date,
+                    .comments {
+                        font-size: $detailsFontSize;
+                        color: black;
+                    }
+        
+                    .date {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        grid-area: date;
+                    }
+        
+                    .comments {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        grid-area: comments;
+        
+                        span {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+        
+                            i {
+                                margin-right: 10px;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+        
+                    $postTemplateAuthorAvatarSize: 30px;
+        
+                    .author {
+                        @extend %flex-row-center;
+                        justify-content: flex-start;
+                        align-items: center;
+                        grid-area: author;
+                        font-size: $detailsFontSize;
+                        text-decoration: none;
+                        margin-left: 10px;
+        
+                        img {
+                            width: $postTemplateAuthorAvatarSize;
+                            height: $postTemplateAuthorAvatarSize;
+                            background-color: $headerMenuBackgroundColor;
+                            border-radius: $menuBorderRadius;
+                            margin-right: 10px;
+                            object-fit: cover;
+                        }
+        
+                        .name {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            grid-area: name;
+                            width: auto;
+                            height: 100%;
+                            color: #252525;
+                        }
+    
+                        &:hover {
+                            .name {
+                                color: $logoColor;
+                            }
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            .post_comments {
+                width: 100%;
+                height: fit-content;
+                margin-top: 15px;
+
+                .auth {
+                    @extend %flex-column-center;
+                    justify-content: center;
+                    width: 100%;
+                    // min-height: 100px;
+                    height: fit-content;
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: $menuBorderRadius;
+                    padding: 40px;
+
+                    .message {
+                        width: 100%;
+                        height: fit-content;
+                        text-align: center;
+                        font-size: 22px;
+                        margin-bottom: 20px
+                    }
+
+                    .links {
+                        @extend %flex-row-center;
+                        justify-content: space-evenly;
+
+                        span {
+                            font-size: 22px;
+                            margin: 0 20px;
+                        }
+
+                        .link {
+                            @extend %flex-row-center;
+                            justify-content: center;
+                            width: 140px;
+                            height: 50px;
+                            text-decoration: none;
+                            color: #252525;
+                            border-radius: $menuBorderRadius;
+                            border: 2px solid #252525;
+                            transition: 0.3s;
+                            
+                            span {
+                                font-size: 20px;
+                            }
+
+                            &:hover {
+                                color: $logoColor;
+                                background-color: #252525;
+                            }
+                        }
+                    }
+
+                    .background {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0.8;
+                        background: #fff;
+                        border-radius: $menuBorderRadius;
+                        z-index: -1;
+                    }
+                }
+                
+                .comment_form {
+                    @extend %flex-row-center;
+                    justify-content: center;
+                    position: relative;
+                    width: 100%;
+                    // min-height: 100px;
+                    height: fit-content;
+                    overflow: hidden;
+                    border-radius: $menuBorderRadius;
+
+                    $leaveCommentBtnSize: 30px;
+
+                    textarea {
+                        width: 100%;
+                        min-height: 100px;
+                        outline: none;
+                        resize: none;
+                        font-family: "Montserrat Regular";
+                        border: none;
+                        padding: 20px calc(#{$leaveCommentBtnSize} + 20px) 20px 20px;
+                        font-size: 18px;
+                        opacity: 0.8;
+
+                        &::-webkit-scrollbar {
+                            width: 8px;
+                        }
+                
+                        &::-webkit-scrollbar-track {
+                            background-color:rgba(0, 0, 0, 0.3);
+                            border-radius: 20px;
+                        }
+                
+                        &::-webkit-scrollbar-thumb {
+                            background-color: black;
+                            border-radius: 20px;
+                            border: 1px solid rgba(0, 0, 0, 0.3);
+                        }
+                    }
+
+                    .leave_comment {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: absolute;
+                        top: 17px;
+                        right: 15px;
+                        width: $leaveCommentBtnSize;
+                        height: $leaveCommentBtnSize;
+                        // border-radius: 50%;
+                        color: #252525;
+                        font-size: 21px;
+
+                        &:hover {
+                            cursor: pointer;
+
+                            i {
+                                color: $logoColor;
+                            }
+                        }
+                    }
+                }
+
+                $postCommentAuthorAvatarSize: 40px;
+
+                .comment {
+                    @extend %flex-column-center;
+                    justify-content: flex-start;
+                    width: 100%;
+                    height: fit-content;
+                    margin-top: 15px;
+                    border-radius: $menuBorderRadius;
+                    position: relative;
+                    padding: 20px;
+
+                    .background {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        opacity: 0.8;
+                        background: #fff;
+                        border-radius: $menuBorderRadius;
+                        z-index: -1;
+                    }
+
+                    .details {
+                        @extend %flex-row-center;
+                        width: 100%;
+                        height: $postCommentAuthorAvatarSize;
+                        justify-content: space-between;
+                        text-decoration: none;
+                        color: #252525;
+
+                        .author {
+                            @extend %flex-row-center;
+                            justify-content: flex-end;
+                            align-items: center;
+                            font-size: $detailsFontSize;
+                            color: $headerMenuTextColor;
+                            cursor: pointer;
+                
+                            img {
+                                width: $postCommentAuthorAvatarSize;
+                                height: $postCommentAuthorAvatarSize;
+                                background-color: $headerMenuBackgroundColor;
+                                margin-right: 10px;
+                                object-fit: cover;
+                                // border-radius: 50%;
+                                border-radius: $menuBorderRadius;
+                            }
+                
+                            .name {
+                                display: flex;
+                                align-items: flex-end;
+                                justify-content: center;
+                                grid-area: name;
+                                width: auto;
+                                height: 100%;  
+                                color: #252525;                         
+                
+                                &:hover {
+                                    color: $logoColor;
+                                }
+                            }
+                        }
+
+                        .date {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: $detailsFontSize;
+                            color: #252525;
+                        }
+                    }
+
+                    .content {
+                        width: 100%;
+                        height: fit-content;
+                        padding: 20px 30px;
+                        font-size: 20px;
+                    }
+
+                    .options {
+                        @extend %flex-row-center;
+                        justify-content: flex-end;
+                        width: 100%;
+                        height: fit-content;
+                        // padding: 30px;
+                        font-size: 20px;
+
+                        i {
+                            margin-right: 15px;
+
+                            &:hover {
+                                cursor: pointer;
+                                color: $logoColor;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        .right_posts_column {
+            width: $textPostsColumnWidth;
+            height: auto;
+            top: $columnRowsMargin;
+            border-radius: $menuBorderRadius;
+        }
+    }
+}
+
+.image_modal {
+    position: fixed;
+    @extend %flex-row-center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+
+    .background {
+        position: absolute;
+        opacity: 0.8;
+        background-color: black;
+        height: inherit;
+        width: inherit;
+    }
+
+    img {
+        width: 50%;
+        object-fit: cover;
+        animation: zoom 0.3s ease-in-out;
+        border-radius: $menuBorderRadius;
+        z-index: 101;
+    }
+
+    .close {
+        position: absolute;
+        top: 50px;
+        right: 50px;
+        font-size: 26px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        color: #fff;
+
+        &:hover {
+            color: $logoColor;
+            border: 2px solid $logoColor;
+            cursor: pointer;
+        }
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}

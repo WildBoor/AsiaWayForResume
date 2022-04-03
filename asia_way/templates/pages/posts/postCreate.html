@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% load posts_tags %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/pages/posts/postCreate.min.css' %}" type="text/css">
+{% endblock css %}
+
+{% block js %}
+    {{ block.super }}
+    <script defer type="module" src="{% static 'js/bundles/postCreate.bundle.js' %}"></script>
+    
+{% endblock js %}
+
+{% block content %}
+    <div class="post_create">
+        <div class="categories">
+            {% get_posts_categories_and_subcategories_tag %}
+            <div class="submit"><i class='bx bx-receipt'></i><span>Publish post</span></div>
+        </div>
+        <div class="new_post">
+            <form action="#" class="post_create_form">
+                {% csrf_token %}
+                {{ post_create_form.title }}
+                {{ post_create_form.content }}
+                {{post_create_form.media}}
+            </form>
+        </div>
+    </div>
+{% endblock content %}

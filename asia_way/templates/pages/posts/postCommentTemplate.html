@@ -1,0 +1,26 @@
+{% load common_tags %}
+
+{% for comment_id, comment in comments.items %}
+    <div class="comment">
+        <div class="background"></div>
+        <div class="details">
+            <a class="author" href="{% url 'user' comment.author_id %}">
+                <img src="{% media comment.author_avatar_url %}" alt="">
+                <div class="name">{{ comment.author_login }}</div>
+            </a>
+            <div class="date">{{ comment.created_at }}</div>
+        </div>
+        <div class="content">{{ comment.content }}</div>
+        <div class="options">
+            {% comment %} <div class="dislike">0 <i class='bx bx-dislike'></i></div>
+            <div class="like">0 <i class='bx bx-like'></i></div>
+            <div class="reply"><i class='bx bx-reply bx-flip-horizontal'></i></div>
+            <div class="comment_comment">0 <i class='bx bx-message-square-detail'></i></div> {% endcomment %}
+
+            <i class='bx bx-dislike'></i>
+            <i class='bx bx-like'></i>
+            <i class='bx bx-reply bx-flip-horizontal'></i>
+            <i class='bx bx-message-square-detail'></i>
+        </div>
+    </div>
+{% endfor %}

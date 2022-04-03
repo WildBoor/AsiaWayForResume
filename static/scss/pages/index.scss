@@ -1,0 +1,69 @@
+@import "../base/variables.scss";
+@import "posts/postPreviewTemplate.scss";
+@import "posts/cardPostTemplate.scss";
+@import "posts/textPostTemplate.scss";
+
+$detailsFontSize: 18px;
+$columnRowsMargin: 15px;
+$textPostsColumnWidth: 230px;
+
+.index__page {
+    @extend %flex-column-center;
+    justify-content: flex-start;
+    width: 95%;
+    height: 95%;
+
+    .row {
+        position: relative;
+        width: 100%;
+        height: auto;
+        margin-bottom: $columnRowsMargin;
+
+        &:nth-child(2) {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-bottom: $columnRowsMargin;
+            padding-bottom: 30px;
+        }
+
+        .left_posts_column {
+            @extend %flex-row-center;
+            justify-content: space-between;
+            width: $textPostsColumnWidth;
+            height: 100%;
+            margin-right: $columnRowsMargin;
+        }
+
+        .center_posts {
+            display: grid;
+            grid-template-areas:
+                "post1 post1 post2"
+                "post3 post4 post4";
+            grid-template-columns: 1fr 1fr 1fr; 
+            grid-template-rows: 1fr 1fr; 
+            grid-gap: $columnRowsMargin;
+            width: calc(100% - #{$textPostsColumnWidth} - #{$columnRowsMargin}); 
+            height: 100%;
+            overflow: hidden;
+            border-radius: $menuBorderRadius;
+            // color: black;
+
+            .post1 {
+                grid-area: post1;
+            }
+            
+            .post2 {
+                grid-area: post2;
+            }
+
+            .post3 {
+                grid-area: post3;
+            }
+
+            .post4 {
+                grid-area: post4;
+            }
+        }
+    }
+}

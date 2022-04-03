@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+{% load posts_tags %}
+
+{% block title %}Asia Way{% endblock title %}
+
+{% block js %}
+    {{ block.super }}
+    <script type="module" src="{% static 'js/bundles/carouselPosts.bundle.js' %}"></script>
+{% endblock js %}
+
+{% block css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/pages/index.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/pages/posts/carouselPostTemplate.min.css' %}" type="text/css">
+{% endblock css %}
+
+{% block content %}
+    <div class="index__page">
+        <div class="row">
+            <div class="top_posts">
+                {% get_carousel_posts_tag %}
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="left_posts_column">
+                {% get_title_posts_tag %}
+            </div>
+            <div class="center_posts">
+                {% get_card_posts_tag %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

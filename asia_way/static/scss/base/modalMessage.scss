@@ -1,0 +1,136 @@
+@import "variables";
+
+.notification_block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: fixed;
+    top: 50px;
+    right: 30px;
+
+    &.hide {
+        transition: 1s;
+        opacity: 0;
+    }
+
+    .modal_message {
+        @extend %flex-column-center;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 350px;
+        height: auto;
+        padding: 10px;
+        cursor: pointer;
+        margin-bottom: 15px;
+        box-shadow: 1px 7px 12px -7px #242424;
+        transition: 0.5s;
+
+        &:hover {
+            transform: scale(1.02);
+            box-shadow: none;
+        }
+
+        .message {
+            height: auto;
+            padding: 20px;
+            text-align: center;
+            color: $headerMenuTextColor;
+        }
+
+        &.hide {
+            transition: 1s;
+            opacity: 0;
+        }
+
+        .close {
+            @extend %flex-column-center;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+
+            .btn {
+                transition: 0.5s;
+                cursor: pointer;
+            }
+        }
+
+        &.success {
+            background-color: $messageSuccessColor;
+
+            .close {
+                .btn {
+                    color: $messageSuccessBorderColor;
+                }
+
+                &:hover {
+                    .btn {
+                        color: $messageSuccessColor;
+                    }
+
+                    background-color: $messageSuccessBorderColor;
+                }
+            }
+        }
+
+        &.primary {
+            background-color: $messagePrimaryColor;
+
+            .close {
+                .btn {
+                    color: $messagePrimaryBorderColor;
+                }
+
+                &:hover {
+                    .btn {
+                        color: $messagePrimaryColor;
+                    }
+
+                    background-color: $messagePrimaryBorderColor;
+                }
+            }
+        }
+
+        &.warning {
+            background-color: $messageWarningColor;
+
+            .close {
+                .btn {
+                    color: $messageWarningBorderColor;
+                }
+
+                &:hover {
+                    .btn {
+                        color: $messageWarningColor;
+                    }
+
+                    background-color: $messageWarningBorderColor;
+                }
+            }
+        }
+
+        &.error {
+            background-color: $messageErrorColor;
+
+            .close {
+                .btn {
+                    color: $messageErrorBorderColor;
+                }
+
+                &:hover {
+                    .btn {
+                        color: $messageErrorColor;
+                    }
+
+                    background-color: $messageErrorBorderColor;
+                }
+            }
+        }
+    }
+}

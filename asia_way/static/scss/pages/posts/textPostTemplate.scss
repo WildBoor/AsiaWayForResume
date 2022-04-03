@@ -1,0 +1,88 @@
+@import "../../base/variables.scss";
+
+.text_posts_template {
+    @extend %flex-column-center;
+    justify-content: flex-start;
+    position: sticky;
+    top: 15px;
+    width: 100%;
+    height: auto;
+
+    .text_post {
+        @extend %flex-column-center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: $menuBorderRadius;
+        overflow: hidden;
+        position: relative;
+        transition: 0.5s;
+        text-decoration: none;
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+            background: #fff;
+            z-index: -1;
+        }
+
+        &:hover {
+            box-shadow: 0px 0px 15px #000;
+            cursor: pointer;
+
+            .title {
+                text-decoration: underline;
+            }
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #000;
+            margin: 0 auto;
+            width: 80%;
+            height: 100px;
+        }
+
+        .details {
+            @extend %flex-row-center;
+            justify-content: center;
+            font-size: 14px;
+            color: #000;
+            width: 100%;
+            height: 40px;
+
+            .date,
+            .comments {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: auto;
+            }
+
+            .comments {
+                margin-right: 15px;
+            }
+        }
+
+
+        // .background {
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     width: 100%;
+        //     height: 100%;
+        //     opacity: 0.8;
+        //     // background: $searchBlockBackgroundGradient;
+        //     z-index: -1;
+        // }
+    }
+}

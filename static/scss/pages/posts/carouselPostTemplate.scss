@@ -1,0 +1,132 @@
+@import "../../base/variables.scss";
+
+$carouselPostsTemplateHeight: 150px;
+$carouselPostTemplateWidth: 400px;
+$carouselPostTemplateMarginRight: 15px;
+$postTemplatePadding: 10px;
+$titleBlockHeight: 50px;
+$postTemplateGridRowGap: 5px;
+$carouselPostTemplateImageSize: calc(#{$carouselPostsTemplateHeight} - 2 *#{$postTemplatePadding});
+
+.carousel_posts {
+    display: grid;
+    grid: auto / auto-flow max-content;
+    grid-gap: 1em;
+    align-items: center; 
+    height: $carouselPostsTemplateHeight;
+    width: auto;
+    // max-width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    .carousel_post {
+        display: grid;
+        grid-template-areas:
+            "post_image title"
+            "post_image content";
+        grid-template-columns: $carouselPostTemplateImageSize 1fr;
+        grid-template-rows: $titleBlockHeight 1fr;
+        height: $carouselPostsTemplateHeight;
+        grid-column-gap: 2*$postTemplatePadding;
+        grid-row-gap: $postTemplateGridRowGap;
+        margin: 0 auto $carouselPostTemplateMarginRight auto;
+        border-radius: $menuBorderRadius;
+        padding: 10px;
+        width: 400px;
+        overflow: hidden;
+        position: relative;
+        transition: 0.8s;
+        color: #000;
+        text-decoration: none;
+
+        &:hover {
+            cursor: pointer;
+
+            .title {
+                text-decoration: underline;
+            }
+        }
+
+        .post_img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            grid-area: post_image;
+            width: $carouselPostTemplateImageSize;
+            height: $carouselPostTemplateImageSize;
+            border-radius: $menuBorderRadius;
+            overflow: hidden;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                cursor: pointer;
+                transition: 1s;
+            }
+        }
+
+        .title{
+            grid-area: title;
+            width: 90%;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .content {
+            grid-area: content;
+            width: 90%;
+            font-size: 12px;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+            background: #fff;
+            z-index: -1;
+        }
+
+        &.translate_x {
+            animation: ease 1s 1;
+        }
+    }
+}
+
+.carousel_previous {
+    left: -20px;
+}
+
+.carousel_next {
+    right: -22px;
+}
+
+.carousel_previous,
+.carousel_next {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 45px;
+    color: black;
+    background-color: #fff;
+    opacity: 0.7;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    visibility: visible;
+    border-radius: $menuBorderRadius;
+
+    &.hide {
+        visibility: hidden;
+    }
+
+    &:hover {
+        opacity: 1;
+        cursor: pointer;
+        box-shadow: 0px 0px 6px #000;
+    }
+}

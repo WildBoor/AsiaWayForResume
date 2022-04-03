@@ -1,0 +1,16 @@
+{% load static %}
+
+{% for post_id, post in posts.items %}
+    <a class="post{{ forloop.counter }} card_post" href="{% url 'post' post_id %}">
+        <div class="subcategory">{{ post.post_subcategory }}</div>
+        <div class="created_at">{{ post.created_at }}</div>
+        <img src="{{ post.preview_image_url }}" alt="" />
+        <div class="title">
+            {% if forloop.counter == 1 or forloop.counter == 4 %}
+                {{ post.title |truncatechars:110 }}
+            {% else %}
+                {{ post.title |truncatechars:80 }}
+            {% endif %}
+        </div>
+    </a>
+{% endfor %}

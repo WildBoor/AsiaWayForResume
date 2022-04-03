@@ -1,0 +1,14 @@
+{% load static %}
+
+<div class="text_posts_template">
+    {% for post_id, post in posts.items %}
+        <a class="text_post" href="{% url 'post' post_id %}">
+            <div class="background"></div>
+            <div class="title">{{ post.title |truncatechars:70 }}</div>
+            <div class="details">
+                <div class="comments">{{ post.comments_total }} Comments</div>
+                <div class="date">{{ post.created_at }}</div>
+            </div>
+        </a>  
+    {% endfor %}
+</div>
